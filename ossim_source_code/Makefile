@@ -47,4 +47,12 @@ $(OBJ):
 clean:
 	rm -f $(OBJ)/*.o os sched mem
 	rm -r $(OBJ)
+# Run tests
+run_tests: os
+	@echo "Running tests..."
+	@for test in input/sched_*; do \
+		echo "Running $$test..."; \
+		./os < $$test; \
+	done
 
+.PHONY: all mem sched os run_tests clean
